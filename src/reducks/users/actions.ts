@@ -1,10 +1,12 @@
-interface UserState {
-    uid: string
-    username: string
+import {User} from "../../types/User";
+
+export interface UserAction {
+    type: string
+    payload: User
 }
 
 export const SIGN_IN = 'SIGN_IN'
-export const signInAction = (userState: UserState) => {
+export const signInAction = (userState: User) => {
     return {
         type: SIGN_IN,
         payload: {
