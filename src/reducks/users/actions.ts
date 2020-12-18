@@ -6,7 +6,7 @@ export interface UserAction {
 }
 
 export const SIGN_IN = 'SIGN_IN'
-export const signInAction = (userState: User) => {
+export const signInAction = (userState: User): UserAction => {
     return {
         type: SIGN_IN,
         payload: {
@@ -18,7 +18,7 @@ export const signInAction = (userState: User) => {
 }
 
 export const SIGN_OUT = 'SIGN_OUT'
-export const signOutAction = () => {
+export const signOutAction = (): UserAction => {
     return {
         type: SIGN_OUT,
         payload: {
