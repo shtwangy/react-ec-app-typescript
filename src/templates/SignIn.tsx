@@ -1,12 +1,15 @@
 import React, {FC} from 'react';
+import {useDispatch} from "react-redux";
+import {push} from "connected-react-router";
 
-interface Props {
-}
-
-const SignIn: FC<Props> = (props: Props) => {
+const SignIn = () => {
+    const dispatch = useDispatch();
     return (
         <div>
-            Sign In Template
+            <h2>サインイン</h2>
+            <button onClick={() => dispatch(push('/'))} >
+                サインインする
+            </button>
         </div>
     );
 };
