@@ -1,40 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {useDispatch, useSelector} from "react-redux";
-import {State} from "./reducks/store/initialState";
-import {signInAction, signOutAction} from "./reducks/users/actions";
+import Router from './Router'
 
-function App() {
-  const dispatch = useDispatch()
-  const selector = useSelector((state: State) => state)
-  console.log(selector.users)
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <button onClick={() => dispatch(signInAction({
-          uid: '001',
-          username: 'hoge'
-        }))}>
-          Sign In
-        </button>
-        <button onClick={() => dispatch(signOutAction())}>
-          Sign out
-        </button>
-      </header>
-    </div>
+      <main>
+        <Router/>
+      </main>
   );
 }
 
