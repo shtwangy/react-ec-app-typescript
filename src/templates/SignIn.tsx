@@ -12,7 +12,7 @@ const SignIn = () => {
         <div>
             <h2>サインイン</h2>
             <button onClick={() => {
-                dispatch(signInAction({uid: '0001', username: 'hoge'}))
+                dispatch(signInAction({isSignedIn: true, uid: '0001', username: 'hoge'}))
                 dispatch(push('/'))
             }} >
                 サインインする
