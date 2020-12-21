@@ -1,12 +1,12 @@
-import {User} from "../../types/User";
+import {UserState} from "./types";
 
 export interface UserAction {
     type: string
-    payload: User
+    payload: UserState
 }
 
 export const SIGN_IN = 'SIGN_IN'
-export const signInAction = (userState: User): UserAction => {
+export const signInAction = (userState: UserState): UserAction => {
     return {
         type: SIGN_IN,
         payload: {
