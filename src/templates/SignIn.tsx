@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {State} from "../reducks/store/initialState";
 import {signIn} from "../reducks/users/operations";
