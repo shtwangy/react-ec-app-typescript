@@ -68,5 +68,8 @@ export const signUp = (username: string, email: string, password: string, confir
                         })
                 }
             })
+            .catch(e => {
+                alert(e.message)
+            })
     }
 }
