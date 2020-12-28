@@ -1,10 +1,14 @@
 import React, {FC, useState, useCallback} from 'react';
 import {PrimaryButton, TextInput} from "../components/UIKit";
+import {useDispatch} from "react-redux";
+import {signUp} from "../reducks/users/operations";
 
 interface Props {
 }
 
 const SignUp: FC<Props> = (props: Props) => {
+    const dispatch = useDispatch()
+
     const [username, setUsername] = useState(''),
         [email, setEmail] = useState(''),
         [password, setPassword] = useState(''),
@@ -76,7 +80,10 @@ const SignUp: FC<Props> = (props: Props) => {
             />
             <div className='module-spacer--medium'></div>
             <div className='center'>
-                <PrimaryButton label={'登録する'} onClick={() => console.log('register')} />
+                <PrimaryButton
+                    label={'登録する'}
+                    onClick={() => dispatch(signUp(username, email, password, confirmPassword))}
+                />
             </div>
         </div>
     );
