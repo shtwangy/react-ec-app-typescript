@@ -1,5 +1,5 @@
 import React, {FC, useState, useCallback} from 'react';
-import {TextInput} from "../components/UIKit";
+import {PrimaryButton, TextInput} from "../components/UIKit";
 
 interface Props {
 }
@@ -74,6 +74,10 @@ const SignUp: FC<Props> = (props: Props) => {
                 onChange={inputConfirmPassword}
                 variant={'standard'}
             />
+            <div className='module-spacer--medium'></div>
+            <div className='center'>
+                <PrimaryButton label={'登録する'} onClick={() => console.log('register')} />
+            </div>
         </div>
     );
 };
