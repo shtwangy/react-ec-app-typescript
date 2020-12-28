@@ -10,6 +10,7 @@ interface Props {
     value: string
     type: React.InputHTMLAttributes<unknown>['type']
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    variant: 'filled' | 'outlined' | 'standard'
 }
 
 const TextInput: FC<Props> = (props: Props) => {
@@ -22,6 +23,7 @@ const TextInput: FC<Props> = (props: Props) => {
         value,
         type,
         onChange,
+        variant
     } = props
     return (
         <TextField
@@ -34,7 +36,7 @@ const TextInput: FC<Props> = (props: Props) => {
             value={value}
             type={type}
             onChange={onChange}
-            variant="outlined"
+            variant={variant}
         />
     )
 }
