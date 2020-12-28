@@ -70,7 +70,7 @@ const SignUp: FC<Props> = (props: Props) => {
                 required={true}
                 rows={1}
                 value={confirmPassword}
-                type={'text'}
+                type={'password'}
                 onChange={inputConfirmPassword}
                 variant={'standard'}
             />
