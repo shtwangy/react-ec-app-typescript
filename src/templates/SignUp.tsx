@@ -16,19 +16,19 @@ const SignUp: FC<Props> = (props: Props) => {
 
     const inputUsername = useCallback((e) => {
         setUsername(e.target.value)
-    }, [setUsername])
+    }, [])
 
     const inputEmail = useCallback((e) => {
         setEmail(e.target.value)
-    }, [setEmail])
+    }, [])
 
     const inputPassword = useCallback((e) => {
         setPassword(e.target.value)
-    }, [setPassword])
+    }, [])
 
     const inputConfirmPassword = useCallback((e) => {
         setConfirmPassword(e.target.value)
-    }, [setConfirmPassword])
+    }, [])
 
     return (
         <div className='c-section-container'>
