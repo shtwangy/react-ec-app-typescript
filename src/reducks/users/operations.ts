@@ -5,6 +5,28 @@ import firebase from "firebase";
 import {auth, db, FirebaseTimestamp} from '../../firebase'
 import {User} from './types'
 
+export const listenAuthState = () => {
+    return async (dispatch: Dispatch) => {
+        return auth.onAuthStateChanged(user => {
+            if (user) {
+                const uid = user.uid
+                db.collection('users').doc(uid).get()
+                    .then(res => {
+                        const data = res.data() as User
+                        dispatch(signInAction({
+                            isSignedIn: true,
+                            role: data.role,
+                            uid: uid,
+                            username: data.username
+                        }))
+                    })
+            } else {
+                dispatch(push('/sign-in'))
+            }
+        })
+    }
+}
+
 export const signIn = (email: string, password: string) => {
     return async (dispatch: Dispatch) => {
         // validation check
