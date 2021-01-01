@@ -1,36 +1,36 @@
 import {signInAction} from "./actions";
 import {push} from 'connected-react-router'
 import {Dispatch} from "redux";
-import {State} from "../store/initialState";
 import {auth, db, FirebaseTimestamp} from '../../firebase'
+import {User} from './types'
 
-interface ApiResponse {
-    login: string
-}
-
-export const signIn = () => {
-    return async (dispatch: Dispatch, getState: () => State) => {
-        const state = getState()
-        const isSignedIn = state.users.isSignedIn
-
-        if (!isSignedIn) {
-            const url = 'https://api.github.com/users/shtwangy'
-            const response = await fetch(url)
-                .then(res => res.json())
-                .then((data: ApiResponse) => data)
-                .catch(() => null)
-
-            if (response) {
-                const username = response.login
-                dispatch(signInAction({
-                    isSignedIn: true,
-                    uid: '0001',
-                    username: username
-                }))
-            }
-
-            dispatch(push('/'))
+export const signIn = (email: string, password: string) => {
+    return async (dispatch: Dispatch) => {
+        // validation check
+        if (email === '' && password === '') {
+            alert('必須項目が未入力です')
+            return false
         }
+
+        return auth.signInWithEmailAndPassword(email, password)
+            .then(res => {
+                const user = res.user
+                if (user) {
+                    const uid = user.uid
+                    db.collection('users').doc(uid).get()
+                        .then(res => {
+                            const data = res.data() as User
+                            dispatch(signInAction({
+                                isSignedIn: true,
+                                role: data.role,
+                                uid: uid,
+                                username: data.username
+                            }))
+
+                            dispatch(push('/'))
+                        })
+                }
+            });
     }
 }
 
