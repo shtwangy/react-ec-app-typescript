@@ -1,6 +1,7 @@
 import {signInAction} from "./actions";
 import {push} from 'connected-react-router'
 import {Dispatch} from "redux";
+import firebase from "firebase";
 import {auth, db, FirebaseTimestamp} from '../../firebase'
 import {User} from './types'
 
@@ -13,7 +14,7 @@ export const signIn = (email: string, password: string) => {
         }
 
         return auth.signInWithEmailAndPassword(email, password)
-            .then(res => {
+            .then((res: firebase.auth.UserCredential) => {
                 const user = res.user
                 if (user) {
                     const uid = user.uid
@@ -47,7 +48,7 @@ export const signUp = (username: string, email: string, password: string, confir
             return false
         }
         return auth.createUserWithEmailAndPassword(email, password)
-            .then(res => {
+            .then((res: firebase.auth.UserCredential) => {
                 const user = res.user
                 if (user) {
                     const uid = user.uid
