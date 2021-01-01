@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import {getUserId} from "../reducks/users/selector";
-import {getUsername} from "../reducks/users/selector";
+import {getUserId} from "../reducks/users/selectors";
+import {getUsername} from "../reducks/users/selectors";
 import {State} from "../reducks/store/initialState";
 import {useSelector} from "react-redux";
 
