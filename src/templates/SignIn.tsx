@@ -50,6 +50,7 @@ const SignIn = () => {
                     onClick={() => dispatch(signIn(email, password))}
                 />
                 <p className='p-link' onClick={() => dispatch(push('/sign-up'))}>アカウントをお持ちでない方はこちら</p>
+                <p className='p-link' onClick={() => dispatch(push('/sign-in/reset'))}>パスワードを忘れた方はこちら</p>
             </div>
         </div>
     );
