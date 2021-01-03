@@ -70,6 +70,8 @@ export const signIn = (email: string, password: string) => {
                             dispatch(push('/'))
                         })
                 }
+            }).catch(() => {
+                alert('サインインに失敗しました。');
             });
     }
 }
