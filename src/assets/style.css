@@ -34,3 +34,8 @@
     margin: 0 auto;
     text-align: center;
 }
+
+.p-link {
+    cursor: pointer;
+    text-decoration: underline solid;
+}
