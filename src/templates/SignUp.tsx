@@ -2,6 +2,7 @@ import React, {FC, useState, useCallback} from 'react';
 import {PrimaryButton, TextInput} from "../components/UIKit";
 import {useDispatch} from "react-redux";
 import {signUp} from "../reducks/users/operations";
+import {push} from "connected-react-router";
 
 interface Props {
 }
@@ -84,6 +85,7 @@ const SignUp: FC<Props> = (props: Props) => {
                     label={'登録する'}
                     onClick={() => dispatch(signUp(username, email, password, confirmPassword))}
                 />
+                <p className='p-link' onClick={() => dispatch(push('/sign-in'))}>すでにアカウントをお持ちの方はこちら</p>
             </div>
         </div>
     );
