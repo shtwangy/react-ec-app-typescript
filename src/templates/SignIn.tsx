@@ -1,7 +1,8 @@
 import React, {useCallback, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {signIn, signUp} from "../reducks/users/operations";
+import {useDispatch} from "react-redux";
+import {signIn} from "../reducks/users/operations";
 import {PrimaryButton, TextInput} from "../components/UIKit";
+import {push} from "connected-react-router";
 
 const SignIn = () => {
     const dispatch = useDispatch()
@@ -48,9 +49,10 @@ const SignIn = () => {
                     label={'サインイン'}
                     onClick={() => dispatch(signIn(email, password))}
                 />
+                <p className='p-link' onClick={() => dispatch(push('/sign-up'))}>アカウントをお持ちでない方はこちら</p>
             </div>
         </div>
     );
-};
+}
 
 export default SignIn;
