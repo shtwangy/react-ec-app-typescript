@@ -1,4 +1,4 @@
-import {signInAction} from "./actions";
+import {signInAction, signOutAction} from "./actions";
 import {push} from 'connected-react-router'
 import {Dispatch} from "redux";
 import firebase from "firebase";
@@ -54,6 +54,16 @@ export const signIn = (email: string, password: string) => {
                         })
                 }
             });
+    }
+}
+
+export const signOut = () => {
+    return async (dispatch: Dispatch) => {
+        auth.signOut()
+            .then(() => {
+                dispatch(signOutAction())
+                dispatch(push('/sign-in'))
+            })
     }
 }
 
