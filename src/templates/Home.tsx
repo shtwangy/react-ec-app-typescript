@@ -6,10 +6,7 @@ import {State} from "../reducks/store/initialState";
 import {useSelector} from "react-redux";
 import {signOut} from "../reducks/users/operations";
 
-interface Props {
-}
-
-const Home: FC<Props> = (props: Props) => {
+const Home: FC = () => {
     const dispatch = useDispatch()
     const selector = useSelector((state: State) => state)
     const uid = getUserId(selector)
